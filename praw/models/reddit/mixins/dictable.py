@@ -2,9 +2,9 @@ from ....const import API_PATH
 
 
 class DictableMixin:
-    DICTABLES_METHODS = []
+    DICTABLES = []
     def to_dict(self):
         result = {}
-        for key in self.DICTABLES_METHODS:
+        for key in self.DICTABLES:
             result[key] = getattr(self, key) # TODO: support methods as the key
         return result

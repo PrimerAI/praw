@@ -16,14 +16,14 @@ from ..listing.generator import ListingGenerator
 from ..listing.mixins import SubredditListingMixin
 from .base import RedditBase
 from .emoji import SubredditEmoji
-from .mixins import FullnameMixin, MessageableMixin
+from .mixins import FullnameMixin, MessageableMixin, DictableMixin
 from .modmail import ModmailConversation
 from .widgets import SubredditWidgets, WidgetEncoder
 from .wikipage import WikiPage
 
 
 class Subreddit(
-    MessageableMixin, SubredditListingMixin, FullnameMixin, RedditBase
+    DictableMixin, MessageableMixin, SubredditListingMixin, FullnameMixin, RedditBase
 ):
     """A class for Subreddits.
 
@@ -95,6 +95,23 @@ class Subreddit(
     .. _Unix Time: https://en.wikipedia.org/wiki/Unix_time
 
     """
+    DICTABLES = [
+        'can_assign_link_flair',
+        'can_assign_user_flair',
+        'created_utc',
+        'description',
+        'description_html',
+        'display_name',
+        'id',
+        'name',
+        'over18',
+        'public_description',
+        'spoilers_enabled',
+        'subscribers',
+        'user_is_banned',
+        'user_is_moderator',
+        'user_is_subscriber'
+    ]
 
     # pylint: disable=too-many-public-methods
 

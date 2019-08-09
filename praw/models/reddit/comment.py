@@ -15,20 +15,6 @@ from .redditor import Redditor
 
 
 class Comment(DictableMixin, InboxableMixin, UserContentMixin, FullnameMixin, RedditBase):
-    DICT_METHODS = [
-        'body',
-        'created_utc',
-        'distinguished',
-        'edited',
-        'id',
-        'is_submitter',
-        'link_id',
-        'parent_id',
-        'permalink',
-        'score',
-        'stickied',
-        'subreddit_id'
-    ]
     """A class that represents a reddit comments.
 
     **Typical Attributes**
@@ -71,6 +57,24 @@ class Comment(DictableMixin, InboxableMixin, UserContentMixin, FullnameMixin, Re
     .. _Unix Time: https://en.wikipedia.org/wiki/Unix_time
 
     """
+    DICTABLES = [
+        # 'author', => Redditor
+        'body',
+        'created_utc',
+        'distinguished',
+        'edited',
+        'id',
+        'is_submitter',
+        'link_id',
+        'parent_id',
+        'permalink',
+        # 'replies', => CommentForest
+        'score',
+        'stickied',
+        # 'submission', => Submission
+        # 'subreddit', => Subreddit
+        'subreddit_id'
+    ]
 
     MISSING_COMMENT_MESSAGE = (
         "This comment does not appear to be in the comment tree"

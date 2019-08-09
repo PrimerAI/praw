@@ -8,13 +8,13 @@ from ..comment_forest import CommentForest
 from ..listing.listing import Listing
 from ..listing.mixins import SubmissionListingMixin
 from .base import RedditBase
-from .mixins import FullnameMixin, ThingModerationMixin, UserContentMixin
+from .mixins import FullnameMixin, ThingModerationMixin, UserContentMixin, DictableMixin
 from .redditor import Redditor
 from .subreddit import Subreddit
 
 
 class Submission(
-    SubmissionListingMixin, UserContentMixin, FullnameMixin, RedditBase
+    DictableMixin, SubmissionListingMixin, UserContentMixin, FullnameMixin, RedditBase
 ):
     """A class for submissions to reddit.
 
@@ -68,6 +68,31 @@ class Submission(
     .. _Unix Time: https://en.wikipedia.org/wiki/Unix_time
 
     """
+    DICTABLES = [
+        # 'author', => Redditor
+        'clicked',
+        # 'comments', => CommentForest
+        'created_utc',
+        'distinguished',
+        'edited',
+        'id',
+        'is_self',
+        # 'link_flair_template_id', TODO: missing from PRAW
+        'link_flair_text',
+        'locked',
+        'name',
+        'num_comments',
+        'over_18',
+        'permalink',
+        'score',
+        'selftext',
+        'spoiler',
+        'stickied',
+        # 'subreddit', => Subreddit
+        'title',
+        'upvote_ratio',
+        'url'
+    ]
 
     STR_FIELD = "id"
 

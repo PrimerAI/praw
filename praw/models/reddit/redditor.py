@@ -6,11 +6,11 @@ from ...util.cache import cachedproperty
 from ..listing.mixins import RedditorListingMixin
 from ..util import stream_generator
 from .base import RedditBase
-from .mixins import FullnameMixin, MessageableMixin
+from .mixins import FullnameMixin, MessageableMixin, DictableMixin
 
 
 class Redditor(
-    MessageableMixin, RedditorListingMixin, FullnameMixin, RedditBase
+    DictableMixin, MessageableMixin, RedditorListingMixin, FullnameMixin, RedditBase
 ):
     """A class representing the users of reddit.
 
@@ -63,6 +63,21 @@ class Redditor(
     .. _Unix Time: https://en.wikipedia.org/wiki/Unix_time
 
     """
+    DICTABLES = [
+        'comment_karma',
+        # 'comments', => Sublisting
+        'created_utc',
+        'has_verified_email',
+        'icon_img',
+        'id',
+        'is_employee',
+        'is_friend',
+        'is_mod',
+        'is_gold',
+        'link_karma',
+        'name',
+        'subreddit'
+    ]
 
     STR_FIELD = "name"
 
