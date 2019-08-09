@@ -9,11 +9,26 @@ from .mixins import (
     InboxableMixin,
     ThingModerationMixin,
     UserContentMixin,
+    DictableMixin
 )
 from .redditor import Redditor
 
 
-class Comment(InboxableMixin, UserContentMixin, FullnameMixin, RedditBase):
+class Comment(DictableMixin, InboxableMixin, UserContentMixin, FullnameMixin, RedditBase):
+    DICT_METHODS = [
+        'body',
+        'created_utc',
+        'distinguished',
+        'edited',
+        'id',
+        'is_submitter',
+        'link_id',
+        'parent_id',
+        'permalink',
+        'score',
+        'stickied',
+        'subreddit_id'
+    ]
     """A class that represents a reddit comments.
 
     **Typical Attributes**

@@ -11,6 +11,7 @@ from .replyable import ReplyableMixin
 from .reportable import ReportableMixin
 from .savable import SavableMixin
 from .votable import VotableMixin
+from .dictable import DictableMixin
 
 
 class ThingModerationMixin:
